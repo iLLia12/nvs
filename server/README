@@ -1,0 +1,3 @@
+npm run db:refresh
+
+https://reyhanhamidi.medium.com/sequelize-automatic-database-migration-and-seeding-on-heroku-fb88cf09573b

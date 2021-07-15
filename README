@@ -1,0 +1,9 @@
+to get postgres and pgAdmin up and running:
+docker-compose up -d
+
+pgAdmin: localhost:5050
+ - create server 
+      1. host name/address: db,
+      2. maintenance database: test_db
+      3. username: root
+      4. password: root
