@@ -1,6 +1,6 @@
-import { getTaskLists, storeTask, deleteTask, getTaskListById } from 'src/services/taskLists'
+import { getTaskLists, storeTask, deleteTask, storeTaskList } from 'src/services/taskLists'
 import { handleError } from "../../services/helpers"
-import { Notify, QSlideItem } from 'quasar'
+import { Notify } from 'quasar'
 
 export function fetchTaskLists ({ commit }) {
   getTaskLists()
@@ -12,7 +12,6 @@ export function fetchTaskLists ({ commit }) {
 export async function storeTaskAction ({ commit }, task) {
   await storeTask(task)
     .then(res => res.data)
-    .then(task => commit('PUSH_TASK_TO_LIST', task))
     .then(res => Notify.create({ message: 'Created', type: 'positive', position: 'top' }))
     .catch(error => handleError(error))
 }
@@ -25,5 +24,11 @@ export async function deleteTaskAction ({ commit }, {id, taskListId}) {
        commit('SET_FINISHED', filteredTasks.filter(item => item.isFinished))
       Notify.create({ message: "Deleted", type: 'positive', position: 'top' })
     })
+    .catch(error => handleError(error))
+}
+export async function storeTaskListAction ({ commit }, taskList) {
+  await storeTaskList(taskList)
+    .then(res => res.data)
+    .then(res => Notify.create({ message: 'Created', type: 'positive', position: 'top' }))
     .catch(error => handleError(error))
 }

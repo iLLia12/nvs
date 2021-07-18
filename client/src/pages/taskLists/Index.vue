@@ -1,46 +1,49 @@
 <template>
   <div class="m-w-1500px q-pt-md m-auto">
     <div class="flex justify-between">
-      <h2 class="q-my-none">Task Lists</h2>
+      <h2 class="q-my-none text-orange text-weight-bolder font-permament-market">Task Lists</h2>
       <div class="flex">
         <q-form class="q-gutter-md flex">
           <div>
             <q-btn 
               label="Add"
               type="button"
-              color="primary"
+              class="font-permament-market"
+              color="orange"
               @click="createTaskList()"
             />
           </div>
           <q-input
               outlined
               v-model="form.name"
+              label-color="orange"
               label="Task List name"
+              input-class="text-orange font-permament-market"
               :error="error"
             />
         </q-form>
       </div>
     </div>
-    <div class="q-pt-md flex">
+    <div class="q-pa-md flex bg-list">
       <div class="q-pa-xs" v-for="(element, key) in getTaskLists" :key="element.id">
-        <q-card flat bordered class="my-card">
+        <q-card flat bordered class="my-card" style="border:2px solid grey">
           <q-card-section class="flex justify-between">
-            <img style="min-width:200px; height:200px; contain: content;" :src="`https://source.unsplash.com/random/200x200?sig=${key}`" alt="" />
+            <img style="min-width:150px; height:150px; contain: content;" :src="`https://source.unsplash.com/random/200x200?sig=${key}`" alt="" />
           </q-card-section>
-          <q-card-section class="flex justify-between">
-            <div class="text-h6">{{element.name}}</div>
-            <div>
-              <q-btn
-                color="primary"
+          <q-card-section class="flex justify-between q-py-none">
+            <div class="text-orange font-permament-market">{{element.name}}</div>
+          </q-card-section>
+          <q-card-section class="q-pt-none">
+            <span class="text-white" style="font-size:10px">tasks: {{element.Tasks.length}}</span>
+          </q-card-section>
+          <q-card-section class="q-pt-none">
+            <q-btn
+                color="negative"
                 size="xs"
-                class="q-mr-xs"
+                class="q-mr-xs font-permament-market"
                 label="Show"
                 @click.native="showTaskList(element)"
               />
-            </div>
-          </q-card-section>
-          <q-card-section class="q-pt-none">
-            tasks: {{element.Tasks.length}}
           </q-card-section>
         </q-card>
       </div>
@@ -55,8 +58,11 @@ export default {
   data() {
     return {
       finished: [],
+      error: false,
+      taskList: {
+        name: "",
+      },
       form: {},
-      error: false
     }
   },
   computed: {
@@ -67,16 +73,39 @@ export default {
   methods: {
     ...mapActions('taskLists', [
       'fetchTaskLists',
+      'storeTaskListAction',
     ]),
     showTaskList({id}) {
       this.$router.push({name: "ShowTaksList", params: { id }})
     },
-    createTaskList() {}
+    createTaskList() {
+      this.error = !this.form.name.length; 
+      if (this.error) return;
+      this.storeTaskListAction(this.form).then(() => {
+        this.fetchTaskLists()
+        this.error = false;
+      })
+    },
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.fetchTaskLists();
     })
   },
+  created() {
+    this.form = {...this.taskList}
+  }
 }
 </script>
+<style lang="scss" scoped>
+.my-card {
+  background: rgb(38,20,46);
+  background: radial-gradient(circle, rgba(38,20,46,0.16850490196078427) 0%, rgba(156,149,163,1) 0%, rgba(38,20,46,0.9136029411764706) 100%);
+}
+.bg-list {
+  background: rgba(75, 67, 67, 0.39);
+  background-image: radial-gradient(black 2px, transparent 0);
+  background-size: 10px 10px;
+  background-position: -19px -19px;
+}
+</style>

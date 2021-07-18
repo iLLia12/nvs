@@ -1,11 +1,11 @@
 <template>
   <div class="m-w-1500px q-pt-lg m-auto flex justify-center">
     <q-card
-      class="my-card w-50"
+      class="my-card w-50 form-bg"
     >
       <q-card-section class="q-pt-none">
         <div class="q-pa-md">
-          <div class="text-h6">Edit task</div>
+          <div class="text-h6 text-orange">Edit task</div>
           <q-form class="q-gutter-md">
             <q-input
               filled
@@ -13,18 +13,18 @@
               label="Task name"
               :error="!form.name.length"
             />
-            <q-toggle v-model="form.isFinished" label="Finished" />
+            <q-toggle color="orange" keep-color v-model="form.isFinished" unchecked-icon="clear"  checked-icon="check" label-color="orange" label="Finished" />
             <div>
               <q-btn 
                 label="Update"
                 type="button"
-                color="primary"
+                color="orange"
                 @click="updateTask()"
               />
               <q-btn
-                label="Cancel"
+                label="Back"
                 type="reset"
-                color="primary"
+                color="orange"
                 flat
                 class="q-ml-sm"
                 @click="previousPage()"
@@ -72,3 +72,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.form-bg {
+  background: $grey;
+}
+</style>

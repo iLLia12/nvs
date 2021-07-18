@@ -8,13 +8,15 @@
       @click="showTaskListsPage()"
     />
     <div class="flex justify-between">
-      <h2 style="color:white" class="q-my-none">TODO</h2>
+      <h2 class="q-my-none text-orange text-weight-bolder font-permament-market">TODO</h2>
       <div class="flex">
         <q-form class="q-gutter-md flex">
           <q-input
               outlined
+              label-color="orange"
               v-model="form.name"
               label="Task name"
+               input-class="text-orange"
               :error="error"
             />
             <div>
@@ -22,20 +24,21 @@
             <q-btn 
               label="Add"
               type="button"
-              color="primary"
+              class="font-permament-market"
+              color="orange"
               @click="createTask()"
             />
             </div>
         </q-form>
       </div>
-      <h2 style="color:white" class="q-my-none">FINISHED</h2>
+      <h2 class="q-my-none text-orange text-weight-bolder font-permament-market">FINISHED</h2>
     </div>
     <div class="flex justify-center">
       <div class="w-50  draggable-wrap">
         <draggable  group="tasks" v-model='todo' @change="droppedOnTODO" class="draggable-wrap q-pa-xs">
-          <q-card flat bordered class="my-card q-mb-xs" v-for="element in todo" :key="element.id">
+          <q-card flat bordered class="my-card q-mb-xs bg-grey" v-for="element in todo" :key="element.id">
               <q-card-section class="flex justify-between">
-                <div class="text-h6">{{element.name}}</div>
+                <div class="text-h6 text-orange">{{element.name}}</div>
                   <div>
                     <q-btn
                       color="secondary"
@@ -59,17 +62,14 @@
                     />
                   </div>
               </q-card-section>
-              <q-card-section class="q-pt-none">
-                is finished: {{element.isFinished}}
-              </q-card-section>
             </q-card>
         </draggable>
       </div>
       <div class="w-50 q-pl-xs">
         <draggable  group="tasks" v-model='finished' @change="droppedOnFinished" class="draggable-wrap q-pa-xs">
-          <q-card flat bordered class="my-card q-mb-xs" v-for="element in finished" :key="element.id">
+          <q-card flat bordered class="my-card q-mb-xs bg-grey" v-for="element in finished" :key="element.id">
               <q-card-section class="flex justify-between">
-                <div class="text-h6">{{element.name}}</div>
+                <div class="text-h6 text-orange">{{element.name}}</div>
                 <div>
                   <q-btn
                       color="secondary"
@@ -92,9 +92,6 @@
                       @click.native="deleteTask(element.id)"
                     />
                   </div>
-              </q-card-section>
-              <q-card-section class="q-pt-none">
-                is finished: {{element.isFinished}}
               </q-card-section>
             </q-card>
         </draggable>
@@ -127,8 +124,6 @@ export default {
   },
   methods: {
     ...mapActions('tasks', [
-      'fetchTasks',
-      'toggleDone',
       'updateTaskAction'
     ]),
     ...mapActions('taskLists', [
@@ -215,6 +210,9 @@ export default {
 <style scoped>
 .draggable-wrap {
   height:75vh;
-  background: rgb(230, 230, 230);
+  background: rgba(75, 67, 67, 0.39);
+  background-image: radial-gradient(black 2px, transparent 0);
+  background-size: 10px 10px;
+  background-position: -19px -19px;
 }
 </style>

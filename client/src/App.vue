@@ -1,12 +1,12 @@
 <template>
   <div id="q-app" class="app-bg">
     <q-layout view="lHh Lpr lFf">
-      <q-header style="background:rgb(0 0 0 / 24%);">
+      <q-header class="header-class">
         <q-toolbar>
           <q-toolbar-title>
-            NVS Test App 
+           <span class="text-orange text-weight-bolder"> NVS Test App</span> 
           </q-toolbar-title>
-          <div>Quasar v{{ $q.version }}</div>
+          <div class="text-orange">Quasar v{{ $q.version }}</div>
         </q-toolbar>
       </q-header>
       <q-page-container>
@@ -22,9 +22,12 @@ export default {
   name: 'App',
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .app-bg {
   background: rgb(38,20,46);
-  background-image:radial-gradient(circle, rgba(38,20,46,0.16850490196078427) 0%, rgba(25,23,27,0.7847514005602241) 46%, rgba(38,20,46,0.9136029411764706) 100%), url("~assets/cover.jpeg")
+  background-image:radial-gradient(circle, rgba(38,20,46,0.16850490196078427) 0%, rgba(25,23,27,0.7847514005602241) 46%, rgba(38,20,46,0.9136029411764706) 100%), url("~assets/wallpapers.jpg")
+}
+.header-class {
+  background:rgb(0 0 0 / 44%);
 }
 </style>
