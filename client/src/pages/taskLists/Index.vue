@@ -24,11 +24,12 @@
         </q-form>
       </div>
     </div>
-    <div class="q-pa-md flex bg-list">
-      <div class="q-pa-xs" v-for="(element, key) in getTaskLists" :key="element.id">
+    <div class="q-pa-md flex bg-list wrap" style="min-height:712px">
+      <img style="margin:auto" v-if="loading" src="~assets/spinner.svg" alt="" />
+      <div v-show="!loading" class="q-pa-xs" v-for="(element, key) in getTaskLists" :key="element.id" style="min-width:244px">
         <q-card flat bordered class="my-card" style="border:2px solid grey">
           <q-card-section class="flex justify-between">
-            <img style="min-width:150px; height:150px; contain: content;" :src="`https://source.unsplash.com/random/200x200?sig=${key}`" alt="" />
+            <img class="thumb-img" :src="`https://source.unsplash.com/random/200x200?sig=${key}`" alt="" />
           </q-card-section>
           <q-card-section class="flex justify-between q-py-none">
             <div class="text-orange font-permament-market">{{element.name}}</div>
@@ -57,6 +58,7 @@ export default {
   name: 'PageIndex',
   data() {
     return {
+      loading: true,
       finished: [],
       error: false,
       taskList: {
@@ -84,6 +86,7 @@ export default {
       this.storeTaskListAction(this.form).then(() => {
         this.fetchTaskLists()
         this.error = false;
+         this.form = {...this.taskList}
       })
     },
   },
@@ -94,6 +97,11 @@ export default {
   },
   created() {
     this.form = {...this.taskList}
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false
+    },2000)
   }
 }
 </script>
@@ -107,5 +115,8 @@ export default {
   background-image: radial-gradient(black 2px, transparent 0);
   background-size: 10px 10px;
   background-position: -19px -19px;
+}
+.thumb-img {
+  contain: content;
 }
 </style>

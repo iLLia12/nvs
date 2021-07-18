@@ -17,7 +17,9 @@ module.exports = function (/* ctx */) {
     css: [
       'app.scss'
     ],
-
+    vendor: {
+      add: ['src/plugins/anime.client.js'],
+    },
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
@@ -87,7 +89,7 @@ module.exports = function (/* ctx */) {
 
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
       ]
     },
 

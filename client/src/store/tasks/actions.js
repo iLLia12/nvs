@@ -13,8 +13,6 @@ export function deleteTaskAction ({ commit }, id) {
     .catch(error => handleError(error))
 }
 export async function updateTaskAction ({ commit }, task) {
-  console.log("updateTaskAction")
-  console.log(task)
   await updateTask(task)
     .then(res => res.data)
     .then(tasks => {
