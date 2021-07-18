@@ -1,4 +1,16 @@
-to get postgres and pgAdmin up and running:
+To get the app run and running :
+
+run proxy:
+- cd proxy
+- npm i
+- node index.js
+
+run client
+- cd client
+- npm i
+- npm run dev
+
+postgres and pgAdmin containers(or use your local setup):
 docker-compose up -d
 
 pgAdmin: localhost:5050
@@ -7,3 +19,12 @@ pgAdmin: localhost:5050
       2. maintenance database: test_db
       3. username: root
       4. password: root
+
+run server:
+- cd server
+- npm i
+- node index.js
+
+run migrations and seeders:
+- cd server
+- npm run db:refresh
