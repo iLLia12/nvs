@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "cd client/ && npm i && npm run prod"
+    "start": "cd server/ && npm i && node index.js"
   },
   "dependencies": {
   },
