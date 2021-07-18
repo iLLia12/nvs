@@ -12,6 +12,7 @@
   "dependencies": {
   },
   "devDependencies": {
+    "@quasar/cli"
   },
   "repository": {
     "type": "git",
