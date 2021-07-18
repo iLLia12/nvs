@@ -69,6 +69,7 @@ export default {
   },
   created() {
     this.getTaskById()
+    this.form = {...this.task}
   }
 };
 </script>
