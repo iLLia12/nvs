@@ -7,12 +7,13 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "cd server/ && npm i && node index.js"
+    "server": "cd server && node index.js",
+    "proxy": "cd proxy && node index.js",
+    "client": "cd client && npm run dev"
   },
   "dependencies": {
   },
   "devDependencies": {
-    "@quasar/cli"
   },
   "repository": {
     "type": "git",
