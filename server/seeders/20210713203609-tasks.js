@@ -2,16 +2,15 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const amount = 24
+    const amount = 34
     let tasks = []
-    const ids = [1,2,3,4,5,6]
+    const ids = [1,2,3,4,5,6,7,8,9,10]
     for(let i = 0; i < amount; i++) {
       let randomId = ids[Math.floor(Math.random() * ids.length)];
       tasks.push({
         name: 'task' + i,
-        isFinished: i === 11 || i === 3,
+        isFinished: i % 2 === 0,
         taskListId: randomId,
-        TaskListId:randomId,
         createdAt: new Date(),
         updatedAt: new Date()
       })

@@ -1,5 +1,5 @@
 <template>
-  <div class="m-w-1200px q-pt-md m-auto bordered-default">
+  <div class="m-w-1500px q-pt-md m-auto bordered-default">
     <div class="flex justify-center">
       <q-btn round color="primary" @click="redirectToCreateTaskPage()">Add</q-btn>
     </div>

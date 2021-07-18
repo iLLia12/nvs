@@ -30,12 +30,18 @@ export function deleteTaskAction ({ commit }, id) {
 export function storeTaskAction ({ commit }, task) {
   storeTask(task)
     .then(res => res.data)
-    .then(tasks => commit('SET_TASKS', tasks))
+    .then(task => {
+      console.log("storeTaskAction")
+      console.log(task)
+      commit('taskLists/PUSH_TASK_TO_LIST', task)
+    })
     .then(res => Notify.create({ message: 'Created', type: 'positive', position: 'top' }))
     .catch(error => handleError(error))
 }
-export function updateTaskAction ({ commit }, task) {
-  updateTask(task)
+export async function updateTaskAction ({ commit }, task) {
+  console.log("updateTaskAction")
+  console.log(task)
+  await updateTask(task)
     .then(res => res.data)
     .then(tasks => {
       commit('SET_TODO', tasks.filter(item => !item.isFinished))

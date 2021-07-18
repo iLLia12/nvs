@@ -20,6 +20,13 @@
                 },
                 "taskListId": {
                     "field": "taskListId",
+                    "allowNull": true,
+                    "references": {
+                        "model": "TaskLists",
+                        "key": "id"
+                    },
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "createdAt": {
@@ -37,17 +44,6 @@
                     },
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
-                },
-                "TaskListId": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "TaskLists",
-                        "key": "id"
-                    },
-                    "onDelete": "SET NULL",
-                    "onUpdate": "CASCADE",
-                    "field": "TaskListId",
-                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []

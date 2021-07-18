@@ -31,7 +31,28 @@ module.exports = {
         name: 'List 6',
         createdAt: new Date(),
         updatedAt: new Date()
-      }
+      },
+      {
+        name: 'List 7',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'List 8',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'List 9',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        name: 'List 10',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      
     ], {}, { tasks: { type: new Sequelize.JSON() } });
   },
 

@@ -4,6 +4,7 @@ const { Task, TaskList } = require("../../models");
 const router = Router();
 
 router.get('/task-lists', (req, res) => TaskList.findAll({include: [{model: Task}]}).then(data => res.json(data)));
+router.get('/task-lists/:id', (req, res) => TaskList.findOne({ where: { id:req.params.id }, include: [{model: Task}]}).then(data => res.send(data)));
 
 module.exports = router
  

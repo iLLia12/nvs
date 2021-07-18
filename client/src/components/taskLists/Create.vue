@@ -1,19 +1,20 @@
 <template>
-  <div class="m-w-1500px q-pt-lg m-auto flex justify-center">
-    <q-card
-      class="my-card w-50"
+  <q-card
+      class="my-card"
     >
       <q-card-section class="q-pt-none">
         <div class="q-pa-md">
           <div class="text-h6">Create task</div>
           <q-form class="q-gutter-md">
-            <q-input
-              filled
+            <div class="flex">
+              <q-input
+              outlined
               v-model="form.name"
               label="Task name"
               :error="!form.name.length"
-            />
-            <q-toggle v-model="form.isFinished" label="Finished" />
+              />
+              <q-toggle v-model="form.isFinished" label="Finished" />
+            </div>
             <div>
               <q-btn 
                 label="Create"
@@ -21,20 +22,11 @@
                 color="primary"
                 @click="createTask()"
               />
-              <q-btn
-                label="Cancel"
-                type="reset"
-                color="primary"
-                flat
-                class="q-ml-sm"
-                @click="previousPage()"
-              />
             </div>
           </q-form>
         </div>
       </q-card-section>
     </q-card>
-  </div>
 </template>
 
 <script>
@@ -46,7 +38,7 @@ export default {
       task: {
         name: "",
         isFinished: false,
-        taskListId: 1
+        taskListId: null
       },
       form: {}
     };
@@ -55,16 +47,13 @@ export default {
     ...mapActions('tasks', [
       'storeTaskAction',
     ]),
-    previousPage() {
-      this.$router.go(-1);
-    },
     createTask() {
       this.storeTaskAction(this.form)
       this.form = {...this.task}
     }
   },
   created() {
-    this.form = {...this.task}
+    this.form = {...this.task, taskListId: }
   }
 };
 </script>

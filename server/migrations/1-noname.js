@@ -13,7 +13,7 @@ var Sequelize = require('sequelize');
 var info = {
     "revision": 1,
     "name": "noname",
-    "created": "2021-07-15T06:06:12.862Z",
+    "created": "2021-07-17T09:46:42.787Z",
     "comment": ""
 };
 
@@ -72,6 +72,13 @@ var migrationCommands = function(transaction) {
                     },
                     "taskListId": {
                         "type": Sequelize.INTEGER,
+                        "onUpdate": "CASCADE",
+                        "onDelete": "NO ACTION",
+                        "references": {
+                            "model": "TaskLists",
+                            "key": "id"
+                        },
+                        "allowNull": true,
                         "field": "taskListId"
                     },
                     "createdAt": {
@@ -83,17 +90,6 @@ var migrationCommands = function(transaction) {
                         "type": Sequelize.DATE,
                         "field": "updatedAt",
                         "defaultValue": Sequelize.NOW
-                    },
-                    "TaskListId": {
-                        "type": Sequelize.INTEGER,
-                        "field": "TaskListId",
-                        "onUpdate": "CASCADE",
-                        "onDelete": "SET NULL",
-                        "references": {
-                            "model": "TaskLists",
-                            "key": "id"
-                        },
-                        "allowNull": true
                     }
                 },
                 {

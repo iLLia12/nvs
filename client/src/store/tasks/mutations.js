@@ -1,5 +1,3 @@
-
-
 export function SET_TODO (state, tasks) {
   console.log("SET_TODO")
   console.log(tasks)

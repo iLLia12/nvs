@@ -1,11 +1,11 @@
 <template>
-  <div class="m-w-1200px q-pt-lg m-auto flex justify-center">
+  <div class="m-w-1500px q-pt-lg m-auto flex justify-center">
     <q-card
       class="my-card w-50"
     >
       <q-card-section class="q-pt-none">
         <div class="q-pa-md">
-          <div class="text-h6">Create task</div>
+          <div class="text-h6">Edit task</div>
           <q-form class="q-gutter-md">
             <q-input
               filled
