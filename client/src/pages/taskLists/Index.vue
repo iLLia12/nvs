@@ -24,10 +24,10 @@
         </q-form>
       </div>
     </div>
-    <div class="q-pa-md flex bg-list wrap" style="min-height:712px">
+    <div class="q-pa-md flex bg-list wrap">
       <img style="margin:auto" v-if="loading" src="~assets/spinner.svg" alt="" />
-      <div v-show="!loading" class="q-pa-xs" v-for="(element, key) in getTaskLists" :key="element.id" style="min-width:244px">
-        <q-card flat bordered class="my-card" style="border:2px solid grey">
+      <div v-show="!loading" class="q-pa-xs m-w-244px" v-for="(element, key) in getTaskLists" :key="element.id">
+        <q-card flat bordered class="my-card">
           <q-card-section class="flex justify-between">
             <img class="thumb-img" :src="`https://source.unsplash.com/random/200x200?sig=${key}`" alt="" />
           </q-card-section>
@@ -35,7 +35,7 @@
             <div class="text-orange font-permament-market">{{element.name}}</div>
           </q-card-section>
           <q-card-section class="q-pt-none">
-            <span class="text-white" style="font-size:10px">tasks: {{element.Tasks.length}}</span>
+            <span class="text-white f-s-10px">tasks: {{element.Tasks.length}}</span>
           </q-card-section>
           <q-card-section class="q-pt-none">
             <q-btn
@@ -107,10 +107,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .my-card {
+  border:2px solid $grey;
   background: rgb(38,20,46);
   background: radial-gradient(circle, rgba(38,20,46,0.16850490196078427) 0%, rgba(156,149,163,1) 0%, rgba(38,20,46,0.9136029411764706) 100%);
 }
 .bg-list {
+  min-height:712px;
   background: rgba(75, 67, 67, 0.39);
   background-image: radial-gradient(black 2px, transparent 0);
   background-size: 10px 10px;

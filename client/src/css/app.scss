@@ -40,6 +40,9 @@
 .m-w-1500px {
   max-width:1500px;
 }
+.m-w-244px {
+  min-width:244px;
+}
 
 /**
 * Border
@@ -53,4 +56,11 @@
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+/**
+* Font-size
+*/
+.f-s-10px {
+  font-size:10px
 }
