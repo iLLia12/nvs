@@ -2,11 +2,6 @@ DEMO - http://104.207.130.123/
 
 To get the app run and running locally:
 
-run proxy:
-- cd proxy
-- npm i
-- node index.js
-
 run client
 - cd client
 - npm i
